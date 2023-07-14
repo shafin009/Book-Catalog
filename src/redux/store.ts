@@ -1,9 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
+import wishlistReducer from '../features/books/wishlistSlice'
 
 
 const store = configureStore({
   reducer: {
-    
+    wishlist: wishlistReducer,
   },
 });
 

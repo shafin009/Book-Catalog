@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import Home from "../page/Home";
-// import Books from "../page/Books";
+import Books from "../page/Books";
 import NotFound from "../page/NotFound";
 import Header from "../page/Header";
 import Footer from "../page/Footer";
@@ -20,17 +20,17 @@ const routes = createBrowserRouter([
     ),
   },
 
-  // {
-  //   path: "/books",
-  //   element: (
-  //     <>
-  //       <Header />
-  //       <Books />
-  //       <Toaster />
-  //       <Footer />
-  //     </>
-  //   ),
-  // },
+  {
+    path: "/books",
+    element: (
+      <>
+        <Header />
+        <Books />
+        <Toaster />
+        <Footer />
+      </>
+    ),
+  },
   {
     path: "/wishlist",
     element: (
