@@ -1,12 +1,11 @@
 import { createBrowserRouter } from "react-router-dom";
 import Home from "../page/Home";
-import App from "../App";
 // import Books from "../page/Books";
 import NotFound from "../page/NotFound";
 import Header from "../page/Header";
 import Footer from "../page/Footer";
 import { Toaster } from "react-hot-toast";
-import Wishlist from "../components/Wishlist.jsx";
+import Wishlist from "../components/Wishlist.tsx";
 
 const routes = createBrowserRouter([
   {

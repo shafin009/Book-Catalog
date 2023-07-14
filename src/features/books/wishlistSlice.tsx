@@ -1,13 +1,18 @@
+import { IBook } from "@/types/globalTypes";
 import { createSlice } from "@reduxjs/toolkit";
-import {IBook } from '@/types/globalTypes'
 
-
-interface IWishlist{
-    books:IBook[]
+interface IWishlist {
+  books: IBook[];
 }
 
-const initialState={
-    books:
-}
+const initialState: IWishlist = {
+  books: [],
+};
 
-const wishlistSlice = createSlice({});
+const wishlistSlice = createSlice({
+  name: "wishlist",
+  initialState,
+  reducers: {},
+});
+
+export default wishlistSlice.reducer;
