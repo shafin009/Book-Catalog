@@ -28,9 +28,11 @@ const Header = () => {
             <button className="inline-flex items-center bg-fuchsia-300	border-0 py-1 px-3 focus:outline-none rounded text-base mt-4 md:mt-0 mr-5 text-black">
               Add Books
             </button>
-            <button className="inline-flex items-center bg-fuchsia-300 border-0 py-1 px-3 focus:outline-none  rounded text-base mt-4 md:mt-0 mr-5 text-black">
-              Wish List
-            </button>
+            <Link to={"/wishlist"}>
+              <button className="inline-flex items-center bg-fuchsia-300 border-0 py-1 px-3 focus:outline-none  rounded text-base mt-4 md:mt-0 mr-5 text-black">
+                Wish List
+              </button>
+            </Link>
             <button className="inline-flex items-center bg-fuchsia-300 border-0 py-1 px-3 focus:outline-none  rounded text-base mt-4 md:mt-0 mr-5 text-black">
               Sign In
             </button>
