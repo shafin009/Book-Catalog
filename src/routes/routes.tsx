@@ -3,25 +3,41 @@ import Home from "../page/Home";
 import App from "../App";
 import Books from "../page/Books";
 import NotFound from "../page/NotFound";
+import Header from "../page/Header";
+import Footer from "../page/Footer";
 
 const routes = createBrowserRouter([
-  // {
-  //   path: "/",
-  //   element: <App />,
-  // },
   {
     path: "/",
-    element: <Home />,
+    element: (
+      <>
+        <Header />
+        <Home />
+        <Footer />
+      </>
+    ),
   },
 
   {
     path: "/books",
-    element: <Books />,
+    element: (
+      <>
+        <Header />
+        <Books />
+        <Footer />
+      </>
+    ),
   },
 
   {
     path: "*",
-    element: <NotFound />,
+    element: (
+      <>
+        <Header />
+        <NotFound />
+        <Footer />
+      </>
+    ),
   },
 ]);
 

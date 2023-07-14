@@ -2,7 +2,7 @@ const Footer = () => {
   const today = new Date();
   const year = today.getFullYear();
   return (
-    <footer className="bg-blue-500 text-white body-font fixed bottom-0 left-0 w-full">
+    <footer className="bg-blue-500 text-white body-font ">
       <div className="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
         <a className="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
           <svg
@@ -17,7 +17,7 @@ const Footer = () => {
           <span className="ml-3 text-xl text-white ">Novel Haven</span>
         </a>
         <p className="text-sm text-white sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">
-          © {year} Novel Haven —
+          © {year} Novel Haven
         </p>
         <span className="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
           <a className="text-white">
