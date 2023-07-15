@@ -1,5 +1,4 @@
 import React from "react";
-import { toast } from "react-hot-toast";
 import { IBook } from "../types/globalTypes";
 import { addToWishlist } from "../features/books/wishlistSlice";
 import { useAppDispatch } from "@/redux/hook";
@@ -13,7 +12,6 @@ const BooksCard: React.FC<IProps> = ({ book }) => {
 
   const handleAddBook = (book: IBook) => {
     dispatch(addToWishlist(book));
-    toast.success("Books Added");
   };
 
   return (

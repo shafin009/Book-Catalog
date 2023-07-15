@@ -1,69 +1,69 @@
 [
   {
-    "_id": 1,
+    "_id": "1",
     "title": "To Kill a Mockingbird",
     "author": "Harper Lee",
     "genre": "Fiction",
     "publicationDate": "July 11, 1960"
   },
   {
-    "_id": 2,
+    "_id": "2",
     "title": "Pride and Prejudice",
     "author": "Jane Austen",
     "genre": "Romance",
     "publicationDate": "January 28, 1813"
   },
   {
-    "_id": 3,
+    "_id": "3",
     "title": "The Great Gatsby",
     "author": "F. Scott Fitzgerald",
     "genre": "Classic",
     "publicationDate": "April 10, 1925"
   },
   {
-    "_id": 4,
+    "_id": "4",
     "title": "Pride and Prejudice",
     "author": "Jane Austen",
     "genre": "Romance",
     "publicationDate": "January 28, 1813"
   },
   {
-    "_id": 5,
+    "_id": "5",
     "title": "The Catcher in the Rye",
     "author": "J.D. Salinger",
     "genre": "Coming-of-age",
     "publicationDate": "July 16, 1951"
   },
   {
-    "_id": 6,
+    "_id": "6",
     "title": "To Kill a Kingdom",
     "author": "Alexandra Christo",
     "genre": "Fantasy",
     "publicationDate": "March 6, 2018"
   },
   {
-    "_id": 7,
+    "_id": "7",
     "title": "The Hobbit",
     "author": "J.R.R. Tolkien",
     "genre": "Fantasy",
     "publicationDate": "September 21, 1937"
   },
   {
-    "_id": 8,
+    "_id": "8",
     "title": "The Da Vinci Code",
     "author": "Dan Brown",
     "genre": "Mystery",
     "publicationDate": "March 18, 2003"
   },
   {
-    "_id": 9,
+    "_id": "9",
     "title": "The Hunger Games",
     "author": "Suzanne Collins",
     "genre": "Science Fiction",
     "publicationDate": "September 14, 2008"
   },
   {
-    "_id": 10,
+    "_id": "10",
     "title": "Harry Potter",
     "author": "J.K. Rowling",
     "genre": "Fantasy",
