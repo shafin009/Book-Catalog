@@ -6,6 +6,8 @@ import Header from "../page/Header";
 import Footer from "../page/Footer";
 import { Toaster } from "react-hot-toast";
 import Wishlist from "../components/Wishlist.tsx";
+import AddBook from "../components/AddBook.tsx";
+import BookDetails from "../components/BookDetails.tsx";
 
 const routes = createBrowserRouter([
   {
@@ -26,6 +28,28 @@ const routes = createBrowserRouter([
       <>
         <Header />
         <Books />
+        <Toaster />
+        <Footer />
+      </>
+    ),
+  },
+  {
+    path: "/addbooks",
+    element: (
+      <>
+        <Header />
+        <AddBook />
+        <Toaster />
+        <Footer />
+      </>
+    ),
+  },
+  {
+    path: "/book-details/:_id",
+    element: (
+      <>
+        <Header />
+        <BookDetails />
         <Toaster />
         <Footer />
       </>

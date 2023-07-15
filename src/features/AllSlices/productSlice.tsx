@@ -3,13 +3,13 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 interface IProduct {
   searchQuery: string;
   filterGenre: string;
-  filterYear: number;
+  filterYear: string;
 }
 
 const initialState: IProduct = {
   searchQuery: "",
   filterGenre: "",
-  filterYear: 0,
+  filterYear: "",
 };
 
 const productSlice = createSlice({
@@ -22,7 +22,7 @@ const productSlice = createSlice({
     setFilterGenre: (state, action: PayloadAction<string>) => {
       state.filterGenre = action.payload;
     },
-    setFilterYear: (state, action: PayloadAction<number>) => {
+    setFilterYear: (state, action: PayloadAction<string>) => {
       state.filterYear = action.payload;
     },
   },

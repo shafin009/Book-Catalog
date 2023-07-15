@@ -1,5 +1,9 @@
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+/* eslint-disable @typescript-eslint/no-unsafe-return */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { IBook } from "../types/globalTypes";
-import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import {
   setSearchQuery,
@@ -8,32 +12,42 @@ import {
 } from "../features/AllSlices/productSlice.tsx";
 import BooksCard from "../components/BooksCard.jsx";
 import { useAppSelector } from "@/redux/hook.ts";
+import { Link } from "react-router-dom";
+import { useGetBooksQuery } from "@/features/api/apiSlice.tsx";
 
 const Books = () => {
-  const [books, setData] = useState<IBook[]>([]);
   const dispatch = useDispatch();
   const { searchQuery, filterGenre, filterYear } = useAppSelector(
     (state) => state.product
   );
 
-  useEffect(() => {
-    fetch("./data.json")
-      .then((res) => res.json())
-      .then((data) => setData(data));
-  }, []);
+  const { data, isLoading } = useGetBooksQuery(undefined);
 
-  const filteredBooks = books.filter((book) => {
-    const lowerCaseSearchQuery = searchQuery.toLowerCase();
+  console.log(data);
 
-    const matchesSearchQuery =
-      !searchQuery ||
-      book.title.toLowerCase().includes(lowerCaseSearchQuery) ||
-      book.author.toLowerCase().includes(lowerCaseSearchQuery) ||
-      book.genre.toLowerCase().includes(lowerCaseSearchQuery);
+  const filteredBooks = data?.data.filter(
+    (book: {
+      title: string;
+      author: string;
+      genre: string;
+      publicationDate: string;
+    }) => {
+      const lowerCaseSearchQuery = searchQuery.toLowerCase();
 
-    return matchesSearchQuery;
-  });
+      const matchesSearchQuery =
+        !searchQuery ||
+        book.title.toLowerCase().includes(lowerCaseSearchQuery) ||
+        book.author.toLowerCase().includes(lowerCaseSearchQuery) ||
+        book.genre.toLowerCase().includes(lowerCaseSearchQuery);
 
+      const matchesFilterGenre = !filterGenre || book.genre === filterGenre;
+
+      const matchesFilterYear =
+        !filterYear || parseInt(book.publicationDate) === parseInt(filterYear);
+
+      return matchesSearchQuery && matchesFilterGenre && matchesFilterYear;
+    }
+  );
   const handleSearchQueryChange = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
@@ -43,18 +57,20 @@ const Books = () => {
   const handleFilterGenreChange = (
     event: React.ChangeEvent<HTMLSelectElement>
   ) => {
-    dispatch(setFilterGenre(event.target.value));
+    const genre = event.target.value;
+    dispatch(setFilterGenre(genre));
   };
 
   const handleFilterYearChange = (
     event: React.ChangeEvent<HTMLSelectElement>
   ) => {
-    dispatch(setFilterYear(Number(event.target.value)));
+    const year = event.target.value;
+    dispatch(setFilterYear(year));
   };
 
   return (
     <div>
-      <div className="flex flex-col sm:flex-row items-center justify-center  space-y-2 sm:space-y-0 sm:space-x-2 pt-7">
+      <div className="flex flex-col sm:flex-row items-center justify-center space-y-2 sm:space-y-0 sm:space-x-2 pt-7">
         <div className="relative flex">
           <label htmlFor="search-field" className="sr-only">
             Search Books
@@ -78,7 +94,7 @@ const Books = () => {
             value={filterGenre}
             onChange={handleFilterGenreChange}
           >
-            <option value=""> Filter By Genre</option>
+            <option value="">Filter By Genre</option>
             <option value="Fiction">Fiction</option>
             <option value="Mystery">Mystery</option>
             <option value="Romance">Romance</option>
@@ -106,17 +122,21 @@ const Books = () => {
       </h1>
 
       <div className="text-gray-600 body-font">
-        <div className="container px-5 py-24 mx-auto">
-          <div className="flex flex-col text-center w-full mb-20"></div>
-          <div className="flex flex-wrap -m-4">
-            {filteredBooks.map((book) => (
-              <div className="p-4 md:w-1/3 flex" key={book?._id}>
+        <div className="container px-5 py-2 mx-auto flex flex-wrap -m-4">
+          {filteredBooks &&
+            filteredBooks.map((book: IBook) => (
+              <div className="p-4 md:w-1/3" key={book?._id}>
                 <BooksCard book={book} />
               </div>
             ))}
-          </div>
         </div>
       </div>
+
+      <Link to={"/addbooks"}>
+        <button className="m-5 flex mx-auto text-white bg-green-500 border-0 py-2 px-8 focus:outline-none hover:bg-green-600 rounded text-lg">
+          Add New Books
+        </button>
+      </Link>
     </div>
   );
 };
