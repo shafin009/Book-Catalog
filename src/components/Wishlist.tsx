@@ -1,4 +1,4 @@
-import { removeFromWishlist } from "@/features/books/wishlistSlice";
+import { removeFromWishlist } from "@/features/AllSlices/wishlistSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/hook";
 
 const Wishlist = () => {

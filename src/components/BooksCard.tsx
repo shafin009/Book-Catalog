@@ -1,6 +1,6 @@
 import React from "react";
 import { IBook } from "../types/globalTypes";
-import { addToWishlist } from "../features/books/wishlistSlice";
+import { addToWishlist } from "../features/AllSlices/wishlistSlice";
 import { useAppDispatch } from "@/redux/hook";
 
 interface IProps {
