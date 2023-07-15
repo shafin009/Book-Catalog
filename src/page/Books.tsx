@@ -21,7 +21,7 @@ const Books = () => {
     (state) => state.product
   );
 
-  const { data, isLoading } = useGetBooksQuery(undefined);
+  const { data } = useGetBooksQuery(undefined);
 
   console.log(data);
 

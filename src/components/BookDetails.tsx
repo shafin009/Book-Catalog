@@ -9,7 +9,7 @@ import { useParams } from "react-router-dom";
 export default function BookDetails() {
   const { _id } = useParams();
 
-  const { data: book, isLoading, error } = useSingleBooksQuery(_id);
+  const { data: book } = useSingleBooksQuery(_id);
 
   return (
     <>
@@ -40,7 +40,7 @@ export default function BookDetails() {
         </div>
       </section>
 
-      <ProductReview />
+      <ProductReview _id={_id!} />
     </>
   );
 }
