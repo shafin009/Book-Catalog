@@ -17,9 +17,10 @@ export default function ProductReview({ _id }: IProps) {
 
   const { data } = useGetCommentsQuery(_id, {
     refetchOnMountOrArgChange: true,
+    pollingInterval: 2000,
   });
 
-  const [postComment, { isLoading, isSuccess }] = usePostCommentMutation();
+  const [postComment] = usePostCommentMutation();
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();

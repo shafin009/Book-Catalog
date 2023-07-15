@@ -1,6 +1,16 @@
+/* eslint-disable @typescript-eslint/no-floating-promises */
+import { useAppSelector } from "@/redux/hook";
 import { Link } from "react-router-dom";
+import { signOut } from "firebase/auth";
+import { auth } from "@/utility/auth";
 
 const Header = () => {
+  const { user } = useAppSelector((state) => state.user);
+
+  const handleLogOut = () => {
+    signOut(auth);
+  };
+
   return (
     <div>
       <header className="text-white body-font bg-blue-500	">
@@ -35,17 +45,31 @@ const Header = () => {
                 Wish List
               </button>
             </Link>
-            <Link to={"/login"}>
-              <button className="inline-flex items-center bg-fuchsia-300 border-0 py-1 px-3 focus:outline-none  rounded text-base mt-4 md:mt-0 mr-5 text-black">
-                Log In
-              </button>
-            </Link>
+            {!user.email && (
+              <>
+                <Link to={"/login"}>
+                  <button className="inline-flex items-center bg-fuchsia-300 border-0 py-1 px-3 focus:outline-none  rounded text-base mt-4 md:mt-0 mr-5 text-black">
+                    Log In
+                  </button>
+                </Link>
 
-            <Link to={"/signup"}>
-              <button className="inline-flex items-center bg-fuchsia-300 border-0 py-1 px-3 focus:outline-none  rounded text-base mt-4 md:mt-0 mr-5 text-black">
-                Sign Up
-              </button>
-            </Link>
+                <Link to={"/signup"}>
+                  <button className="inline-flex items-center bg-fuchsia-300 border-0 py-1 px-3 focus:outline-none  rounded text-base mt-4 md:mt-0 mr-5 text-black">
+                    Sign Up
+                  </button>
+                </Link>
+              </>
+            )}
+            {user.email && (
+              <>
+                <button
+                  onClick={handleLogOut}
+                  className="inline-flex items-center bg-fuchsia-300 border-0 py-1 px-3 focus:outline-none  rounded text-base mt-4 md:mt-0 mr-5 text-black"
+                >
+                  Log Out
+                </button>
+              </>
+            )}
           </nav>
         </div>
       </header>

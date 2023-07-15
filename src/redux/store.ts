@@ -2,11 +2,13 @@ import { configureStore } from "@reduxjs/toolkit";
 import wishlistReducer from "../features/AllSlices/wishlistSlice";
 import productReducer from "../features/AllSlices/productSlice";
 import { api } from "./../features/api/apiSlice";
+import userReducer from "../features/AllSlices/userSlice";
 
 const store = configureStore({
   reducer: {
     wishlist: wishlistReducer,
     product: productReducer,
+    user: userReducer,
     [api.reducerPath]: api.reducer,
   },
   middleware: (getDefaultMiddleware) =>

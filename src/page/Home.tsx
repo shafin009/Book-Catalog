@@ -1,6 +1,27 @@
+import { onAuthStateChanged } from "firebase/auth";
 import Book from "../assets/books.jpg";
 import { Link } from "react-router-dom";
+import { auth } from "@/utility/auth";
+import { useAppDispatch } from "@/redux/hook";
+import { setLoading, setUser } from "@/features/AllSlices/userSlice";
+import { useEffect } from "react";
+
 const Home = () => {
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(setLoading(true));
+
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        dispatch(setUser(user.email));
+        dispatch(setLoading(false));
+      } else {
+        dispatch(setLoading(false));
+      }
+    });
+  }, [dispatch]);
+
   return (
     <div>
       <section className="text-black  body-font">

@@ -8,8 +8,14 @@ import { Toaster } from "react-hot-toast";
 import Wishlist from "../components/Wishlist.tsx";
 import AddBook from "../components/AddBook.tsx";
 import BookDetails from "../components/BookDetails.tsx";
-import Login from "@/page/Login.tsx";
-import Signup from "@/page/Signup.tsx";
+import { Signup } from "@/page/Signup.tsx";
+import { Login } from "@/page/Login.tsx";
+
+
+
+
+
+
 
 const routes = createBrowserRouter([
   {
