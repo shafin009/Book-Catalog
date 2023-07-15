@@ -3,20 +3,13 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import ProductReview from "@/components/ProductReview";
-import { addToWishlist } from "@/features/AllSlices/wishlistSlice";
 import { useSingleBooksQuery } from "@/features/api/apiSlice";
-import { useAppDispatch } from "@/redux/hook";
-import { IBook } from "@/types/globalTypes";
 import { useParams } from "react-router-dom";
 
 export default function BookDetails() {
-  const { id } = useParams();
-  const dispatch = useAppDispatch();
-  const handleAddBook = (book: IBook) => {
-    dispatch(addToWishlist(book));
-  };
+  const { _id } = useParams();
 
-  const { data: book, isLoading, error } = useSingleBooksQuery(id);
+  const { data: book, isLoading, error } = useSingleBooksQuery(_id);
 
   return (
     <>
@@ -40,10 +33,7 @@ export default function BookDetails() {
           </div>
 
           <div className="flex justify-center mx-auto mt-6">
-            <button
-              onClick={() => handleAddBook(book)}
-              className="text-white bg-green-500 border-0 py-2 px-6 focus:outline-none hover:bg-green-600 rounded"
-            >
+            <button className="text-white bg-green-500 border-0 py-2 px-6 focus:outline-none hover:bg-green-600 rounded">
               Add to Wishlist
             </button>
           </div>

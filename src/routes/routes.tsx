@@ -8,6 +8,8 @@ import { Toaster } from "react-hot-toast";
 import Wishlist from "../components/Wishlist.tsx";
 import AddBook from "../components/AddBook.tsx";
 import BookDetails from "../components/BookDetails.tsx";
+import Login from "@/page/Login.tsx";
+import Signup from "@/page/Signup.tsx";
 
 const routes = createBrowserRouter([
   {
@@ -50,6 +52,28 @@ const routes = createBrowserRouter([
       <>
         <Header />
         <BookDetails />
+        <Toaster />
+        <Footer />
+      </>
+    ),
+  },
+  {
+    path: "/signup",
+    element: (
+      <>
+        <Header />
+        <Signup />
+        <Toaster />
+        <Footer />
+      </>
+    ),
+  },
+  {
+    path: "/login",
+    element: (
+      <>
+        <Header />
+        <Login />
         <Toaster />
         <Footer />
       </>

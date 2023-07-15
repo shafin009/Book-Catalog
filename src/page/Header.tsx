@@ -35,12 +35,17 @@ const Header = () => {
                 Wish List
               </button>
             </Link>
-            <button className="inline-flex items-center bg-fuchsia-300 border-0 py-1 px-3 focus:outline-none  rounded text-base mt-4 md:mt-0 mr-5 text-black">
-              Sign In
-            </button>
-            <button className="inline-flex items-center bg-fuchsia-300 border-0 py-1 px-3 focus:outline-none  rounded text-base mt-4 md:mt-0 mr-5 text-black">
-              Sign Up
-            </button>
+            <Link to={"/login"}>
+              <button className="inline-flex items-center bg-fuchsia-300 border-0 py-1 px-3 focus:outline-none  rounded text-base mt-4 md:mt-0 mr-5 text-black">
+                Log In
+              </button>
+            </Link>
+
+            <Link to={"/signup"}>
+              <button className="inline-flex items-center bg-fuchsia-300 border-0 py-1 px-3 focus:outline-none  rounded text-base mt-4 md:mt-0 mr-5 text-black">
+                Sign Up
+              </button>
+            </Link>
           </nav>
         </div>
       </header>
