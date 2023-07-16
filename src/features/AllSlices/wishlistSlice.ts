@@ -7,6 +7,7 @@ interface IWishlist {
 }
 
 const storedWishlist = localStorage.getItem("wishlist");
+
 const initialState: IWishlist = {
   books: storedWishlist ? JSON.parse(storedWishlist) : [],
 };
