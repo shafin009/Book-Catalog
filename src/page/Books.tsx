@@ -23,7 +23,6 @@ const Books = () => {
 
   const { data } = useGetBooksQuery(undefined);
 
-
   const filteredBooks = data?.data.filter(
     (book: {
       title: string;
@@ -119,15 +118,17 @@ const Books = () => {
       <h1 className="sm:text-3xl p-5 text-2xl font-medium text-center title-font text-gray-900">
         All Books
       </h1>
-
       <div className="text-gray-600 body-font">
         <div className="container px-5 py-2 mx-auto flex flex-wrap -m-4">
           {filteredBooks &&
-            filteredBooks.reverse().map((book:IBook) => (
-              <div className="p-4 md:w-1/3" key={book?._id}>
-                <BooksCard book={book} />
-              </div>
-            ))}
+            filteredBooks
+              .reverse()
+              .slice(0, 10)
+              .map((book: IBook) => (
+                <div className="p-4 md:w-1/3" key={book?._id}>
+                  <BooksCard book={book} />
+                </div>
+              ))}
         </div>
       </div>
 

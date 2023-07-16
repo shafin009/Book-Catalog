@@ -15,6 +15,7 @@ export default function BookDetails() {
   const { data: book } = useSingleBooksQuery(_id);
 
   const { user } = useAppSelector((state: { user: any }) => state.user);
+
   const [deleteBook] = useDeleteBookMutation();
   const handleDeleteBook = () => {
     if (user.email === book?.email) {

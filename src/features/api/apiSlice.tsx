@@ -37,7 +37,7 @@ export const api = createApi({
 
     updateBook: builder.mutation({
       query: ({ _id, data }) => ({
-        url: `/books/${_id}`,
+        url: `/books/update/${_id}`,
         method: "PATCH",
         data: data,
       }),

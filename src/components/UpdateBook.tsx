@@ -33,8 +33,11 @@ export const UpdateBook = () => {
       toast.success("Book updated successfully");
 
       navigate(`/book-details/${id}`);
+
+      setIsSubmitting(false);
     } catch (error) {
       toast.error("Failed to update book");
+
       setIsSubmitting(false);
     }
   };
@@ -68,7 +71,7 @@ export const UpdateBook = () => {
                     type="text"
                     id="title"
                     placeholder="Book Name"
-                    defaultValue={book?.data?.title}
+                    defaultValue={book?.title}
                     {...register("title", { required: true })}
                   />
                 </div>
@@ -81,7 +84,7 @@ export const UpdateBook = () => {
                     type="text"
                     id="author"
                     placeholder="Book Author Name"
-                    defaultValue={book?.data?.author}
+                    defaultValue={book?.author}
                     {...register("author", { required: true })}
                   />
                 </div>
@@ -94,7 +97,7 @@ export const UpdateBook = () => {
                     type="text"
                     id="genre"
                     placeholder="Book Genre Name"
-                    defaultValue={book?.data?.genre}
+                    defaultValue={book?.genre}
                     {...register("genre", { required: true })}
                   />
                 </div>
@@ -109,7 +112,7 @@ export const UpdateBook = () => {
                     type="text"
                     id="publicationDate"
                     placeholder="Book Publication Date"
-                    defaultValue={book?.data?.publicationDate}
+                    defaultValue={book?.publicationDate}
                     {...register("publicationDate", { required: true })}
                   />
                 </div>
