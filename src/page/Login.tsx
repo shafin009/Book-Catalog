@@ -1,10 +1,16 @@
+/* eslint-disable prefer-const */
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-floating-promises */
 /* eslint-disable @typescript-eslint/no-misused-promises */
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { loginUser } from "@/features/AllSlices/userSlice";
-import { useAppDispatch } from "@/redux/hook";
+import { useAppDispatch, useAppSelector } from "@/redux/hook";
+import { toast } from "react-hot-toast";
+import { useEffect } from "react";
 
 type UserAuthFormProps = React.HTMLAttributes<HTMLDivElement>;
 
@@ -20,11 +26,23 @@ export function Login({ className, ...props }: UserAuthFormProps) {
     formState: { errors },
   } = useForm<LoginFormInputs>();
 
+  const { user, isLoading } = useAppSelector((state) => state.user);
+  const navigate = useNavigate();
   const dispatch = useAppDispatch();
+
+  const { state } = useLocation();
+  let from = state?.from?.pathname || "/";
 
   const onsubmit = (data: LoginFormInputs) => {
     dispatch(loginUser({ email: data.email, password: data.password }));
+    toast.success("User Successfully Logged in");
   };
+
+  useEffect(() => {
+    if (user.email && !isLoading) {
+      navigate(from, { replace: true });
+    }
+  }, [user.email, isLoading, from]);
 
   return (
     <div className="h-full" {...props}>

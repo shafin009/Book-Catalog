@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, RouteObject } from "react-router-dom";
 import Home from "../page/Home";
 import Books from "../page/Books";
 import NotFound from "../page/NotFound";
@@ -11,13 +11,7 @@ import BookDetails from "../components/BookDetails.tsx";
 import { Signup } from "@/page/Signup.tsx";
 import { Login } from "@/page/Login.tsx";
 
-
-
-
-
-
-
-const routes = createBrowserRouter([
+const Router: RouteObject[] = [
   {
     path: "/",
     element: (
@@ -29,7 +23,6 @@ const routes = createBrowserRouter([
       </>
     ),
   },
-
   {
     path: "/books",
     element: (
@@ -46,7 +39,9 @@ const routes = createBrowserRouter([
     element: (
       <>
         <Header />
+
         <AddBook />
+
         <Toaster />
         <Footer />
       </>
@@ -96,7 +91,6 @@ const routes = createBrowserRouter([
       </>
     ),
   },
-
   {
     path: "*",
     element: (
@@ -107,6 +101,8 @@ const routes = createBrowserRouter([
       </>
     ),
   },
-]);
+];
+
+const routes = createBrowserRouter(Router);
 
 export default routes;

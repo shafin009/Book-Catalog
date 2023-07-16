@@ -1,14 +1,32 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
-import { useAppSelector } from "@/redux/hook";
+import { useAppDispatch, useAppSelector } from "@/redux/hook";
 import { Link } from "react-router-dom";
 import { signOut } from "firebase/auth";
 import { auth } from "@/utility/auth";
+import { toast } from "react-hot-toast";
+import { setUser } from "@/features/AllSlices/userSlice";
 
 const Header = () => {
   const { user } = useAppSelector((state) => state.user);
 
+  const dispatch = useAppDispatch();
+
   const handleLogOut = () => {
-    signOut(auth);
+    signOut(auth).then(() => {
+      dispatch(setUser(null));
+    });
+
+    toast.success("User Successfully Logged out", {
+      style: {
+        border: "1px solid #713200",
+        padding: "16px",
+        color: "#FF0000",
+      },
+      iconTheme: {
+        primary: "#FF0000",
+        secondary: "#FFFAEE",
+      },
+    });
   };
 
   return (
