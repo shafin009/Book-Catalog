@@ -1,13 +1,14 @@
-import { removeFromWishlist } from "@/features/AllSlices/wishlistSlice";
+import { removeFromWishlist } from "@/features/AllSlices/Wishlist";
 import { useAppDispatch, useAppSelector } from "@/redux/hook";
-
 import { IBook } from "@/types/globalTypes";
 
 const Wishlist = () => {
-  const { books } = useAppSelector(
-    (state: { wishlist: any }) => state.wishlist
-  );
+  const { wishlist: Books } = useAppSelector((state) => state.wishlist);
   const dispatch = useAppDispatch();
+
+  const handleRemoveBook = (Books: IBook) => {
+    dispatch(removeFromWishlist(Books));
+  };
 
   return (
     <div>
@@ -37,16 +38,16 @@ const Wishlist = () => {
             </tr>
           </thead>
           <tbody className="bg-white divide-y divide-gray-200">
-            {books?.map((book: IBook) => (
-              <tr key={book?._id}>
+            {Books?.map((Books) => (
+              <tr key={Books?._id}>
                 <td className="px-4 py-3 sm:px-6 sm:py-4 text-center">
-                  <div className="text-sm text-gray-900">{book?.title}</div>
+                  <div className="text-sm text-gray-900">{Books?.title}</div>
                 </td>
                 <td className="px-4 py-3 sm:px-6 sm:py-4 text-center">
-                  <div className="text-sm text-gray-900">{book?.author}</div>
+                  <div className="text-sm text-gray-900">{Books?.author}</div>
                 </td>
                 <td className="px-4 py-3 sm:px-6 sm:py-4 text-center">
-                  <div className="text-sm text-gray-900">{book?.genre}</div>
+                  <div className="text-sm text-gray-900">{Books?.genre}</div>
                 </td>
                 <td className="px-4 py-3 sm:px-6 sm:py-4 text-center">
                   <div className="flex gap-2">
@@ -60,7 +61,7 @@ const Wishlist = () => {
                 </td>
                 <td className="px-4 py-3 sm:px-6 sm:py-4 text-center">
                   <button
-                    onClick={() => dispatch(removeFromWishlist(book))}
+                    onClick={() => handleRemoveBook(Books)}
                     className="px-2 py-1 bg-red-500 text-white text-xs rounded"
                   >
                     Remove

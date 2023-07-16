@@ -5,11 +5,12 @@ import NotFound from "../page/NotFound";
 import Header from "../page/Header";
 import Footer from "../page/Footer";
 import { Toaster } from "react-hot-toast";
-import Wishlist from "../components/Wishlist.tsx";
 import AddBook from "../components/AddBook.tsx";
 import BookDetails from "../components/BookDetails.tsx";
 import { Signup } from "@/page/Signup.tsx";
 import { Login } from "@/page/Login.tsx";
+import Wishlist from "@/components/Wishlist.tsx";
+import { UpdateBook } from "@/components/UpdateBook.tsx";
 
 const Router: RouteObject[] = [
   {
@@ -35,6 +36,10 @@ const Router: RouteObject[] = [
     ),
   },
   {
+    path: "/update-book/:id",
+    element: <UpdateBook />,
+  },
+  {
     path: "/addbooks",
     element: (
       <>
@@ -58,6 +63,7 @@ const Router: RouteObject[] = [
       </>
     ),
   },
+
   {
     path: "/signup",
     element: (

@@ -1,11 +1,12 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/restrict-template-expressions */
+
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const api = createApi({
   reducerPath: "api",
   baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:5000/" }),
-  tagTypes: ["comments"],
+  tagTypes: ["comments", "book"],
   endpoints: (builder) => ({
     getBooks: builder.query({
       query: () => "/books",
@@ -25,6 +26,28 @@ export const api = createApi({
       query: (_id) => `/comment/${_id}`,
       providesTags: ["comments"],
     }),
+    addbooks: builder.mutation({
+      query: ({ data }) => ({
+        url: "/item",
+        method: "POST",
+        body: data,
+      }),
+      invalidatesTags: ["comments"],
+    }),
+
+    updateBook: builder.mutation({
+      query: ({ _id, data }) => ({
+        url: `/books/${_id}`,
+        method: "PATCH",
+        body: data,
+      }),
+    }),
+    deleteBook: builder.mutation({
+      query: (_id) => ({
+        url: `/book/${_id}`,
+        method: "DELETE",
+      }),
+    }),
   }),
 });
 
@@ -33,4 +56,7 @@ export const {
   useSingleBooksQuery,
   usePostCommentMutation,
   useGetCommentsQuery,
+  useAddbooksMutation,
+  useDeleteBookMutation,
+  useUpdateBookMutation,
 } = api;

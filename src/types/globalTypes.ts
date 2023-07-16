@@ -5,4 +5,5 @@ export type IBook = {
   genre: string;
   publicationDate: string;
   status?: string;
+  userEmail?: string | null;
 };
