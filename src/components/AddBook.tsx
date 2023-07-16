@@ -11,6 +11,7 @@ interface BookFormValues {
   author: string;
   genre: string;
   publicationDate: string;
+  email?: string;
 }
 
 const AddBook = () => {

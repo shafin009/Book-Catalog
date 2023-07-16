@@ -1,12 +1,9 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-/* eslint-disable @typescript-eslint/no-floating-promises */
-/* eslint-disable @typescript-eslint/no-unsafe-call */
+import { ChangeEvent, FormEvent, useState } from "react";
+
 import {
   useGetCommentsQuery,
   usePostCommentMutation,
 } from "@/features/api/apiSlice";
-import { ChangeEvent, FormEvent, useState } from "react";
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 
 interface IProps {
   _id: string;

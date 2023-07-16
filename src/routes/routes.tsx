@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import { createBrowserRouter, RouteObject } from "react-router-dom";
 import Home from "../page/Home";
 import Books from "../page/Books";
@@ -10,7 +11,8 @@ import BookDetails from "../components/BookDetails.tsx";
 import { Signup } from "@/page/Signup.tsx";
 import { Login } from "@/page/Login.tsx";
 import Wishlist from "@/components/Wishlist.tsx";
-import { UpdateBook } from "@/components/UpdateBook.tsx";
+import UpdateBook from "@/components/UpdateBook.tsx";
+import PrivateRoute from "./PrivateRoute";
 
 const Router: RouteObject[] = [
   {
@@ -37,16 +39,25 @@ const Router: RouteObject[] = [
   },
   {
     path: "/update-book/:id",
-    element: <UpdateBook />,
+    element: (
+      <>
+        <Header />
+        <PrivateRoute>
+          <UpdateBook />
+        </PrivateRoute>
+        <Toaster />
+        <Footer />
+      </>
+    ),
   },
   {
     path: "/addbooks",
     element: (
       <>
         <Header />
-
-        <AddBook />
-
+        <PrivateRoute>
+          <AddBook />
+        </PrivateRoute>
         <Toaster />
         <Footer />
       </>
@@ -57,13 +68,14 @@ const Router: RouteObject[] = [
     element: (
       <>
         <Header />
-        <BookDetails />
+        <PrivateRoute>
+          <BookDetails />
+        </PrivateRoute>
         <Toaster />
         <Footer />
       </>
     ),
   },
-
   {
     path: "/signup",
     element: (
@@ -91,7 +103,9 @@ const Router: RouteObject[] = [
     element: (
       <>
         <Header />
-        <Wishlist />
+        <PrivateRoute>
+          <Wishlist />
+        </PrivateRoute>
         <Toaster />
         <Footer />
       </>

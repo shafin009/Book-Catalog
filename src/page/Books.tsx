@@ -23,7 +23,6 @@ const Books = () => {
 
   const { data } = useGetBooksQuery(undefined);
 
-  console.log(data);
 
   const filteredBooks = data?.data.filter(
     (book: {

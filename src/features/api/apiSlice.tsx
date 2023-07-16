@@ -39,9 +39,10 @@ export const api = createApi({
       query: ({ _id, data }) => ({
         url: `/books/${_id}`,
         method: "PATCH",
-        body: data,
+        data: data,
       }),
     }),
+
     deleteBook: builder.mutation({
       query: (_id) => ({
         url: `/books/${_id}`,

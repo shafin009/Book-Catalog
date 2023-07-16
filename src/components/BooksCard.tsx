@@ -20,13 +20,17 @@ const BooksCard: React.FC<IProps> = ({ book }) => {
       <div className="flex rounded-lg h-full bg-gray-100 p-8 flex-col">
         <div className="flex items-center mb-3">
           <h2 className="text-gray-900 text-lg title-font font-medium">
-            {book?.title}
+            Book Title:-{book?.title}
           </h2>
         </div>
         <div className="flex-grow">
-          <p className="leading-relaxed text-base">{book?.author}</p>
-          <p className="leading-relaxed text-base">{book?.genre}</p>
-          <p className="leading-relaxed text-base">{book?.publicationDate}</p>
+          <p className="leading-relaxed text-base">
+            Book Author:-{book?.author}
+          </p>
+          <p className="leading-relaxed text-base">Book Genre:-{book?.genre}</p>
+          <p className="leading-relaxed text-base">
+            Book Publication Date:-{book?.publicationDate}
+          </p>
           <div className="flex justify-between items-center">
             <Link to={`/book-details/${book._id}`}>
               <button className="mt-3 text-indigo-500 inline-flex items-center">

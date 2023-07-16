@@ -16,8 +16,8 @@ interface BookForm {
 }
 
 export const UpdateBook = () => {
-  const { _id } = useParams<{ _id: string }>();
-  const { data: book } = useSingleBooksQuery(_id);
+  const { id } = useParams();
+  const { data: book } = useSingleBooksQuery(id);
   const navigate = useNavigate();
   const { register, handleSubmit } = useForm<BookForm>();
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -27,17 +27,14 @@ export const UpdateBook = () => {
     setIsSubmitting(true);
 
     try {
-      await updateBookMutation({ _id, data: formData });
+      await updateBookMutation({ data: formData });
 
-      // Display a success toast
+      console.log({ data: formData });
       toast.success("Book updated successfully");
 
-      navigate(`/book-details/${_id}`);
-
-      setIsSubmitting(false);
+      navigate(`/book-details/${id}`);
     } catch (error) {
       toast.error("Failed to update book");
-
       setIsSubmitting(false);
     }
   };
@@ -71,7 +68,7 @@ export const UpdateBook = () => {
                     type="text"
                     id="title"
                     placeholder="Book Name"
-                    defaultValue={book?.title}
+                    defaultValue={book?.data?.title}
                     {...register("title", { required: true })}
                   />
                 </div>
@@ -84,7 +81,7 @@ export const UpdateBook = () => {
                     type="text"
                     id="author"
                     placeholder="Book Author Name"
-                    defaultValue={book?.author}
+                    defaultValue={book?.data?.author}
                     {...register("author", { required: true })}
                   />
                 </div>
@@ -97,7 +94,7 @@ export const UpdateBook = () => {
                     type="text"
                     id="genre"
                     placeholder="Book Genre Name"
-                    defaultValue={book?.genre}
+                    defaultValue={book?.data?.genre}
                     {...register("genre", { required: true })}
                   />
                 </div>
@@ -112,7 +109,7 @@ export const UpdateBook = () => {
                     type="text"
                     id="publicationDate"
                     placeholder="Book Publication Date"
-                    defaultValue={book?.publicationDate}
+                    defaultValue={book?.data?.publicationDate}
                     {...register("publicationDate", { required: true })}
                   />
                 </div>
